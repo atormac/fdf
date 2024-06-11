@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 21:00:27 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/11 21:26:13 by atorma           ###   ########.fr       */
+/*   Created: 2024/06/11 21:19:37 by atorma            #+#    #+#             */
+/*   Updated: 2024/06/11 21:26:56 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#ifndef FDF_H
+# define FDF_H
 
-int main(int argc, char **argv)
-{
-	if (argc != 2)
-		return (0);
-	(void)argv;
-	matrix_alloc(5, 5);
-	return (0);
-}
+#include "../libft/libft.h"
+
+void	matrix_free(int	**p, size_t y);
+int		**matrix_alloc(size_t x, size_t y);
+
+#endif
