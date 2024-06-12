@@ -26,7 +26,8 @@ target debug: CFLAGS += -g -fsanitize=address
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(MAKE) -C $(MLXDIR)
+	cmake $(MLXDIR) -B $(MLXDIR)/build
+	cmake --build $(MLXDIR)/build -j4
 	$(MAKE) -C $(LIBDIR)
 	$(CC) -o $@ $(CFLAGS) $^ $(LIBS) $(LDFLAGS)
 
@@ -35,7 +36,7 @@ $(SOURCE_DIR)/%.o: %.c
 
 clean:
 	$(MAKE) -C $(LIBDIR) $@
-	$(MAKE) -C $(MLXDIR) $@
+	rm -rf $(MLXDIR)/build
 	rm -f $(OBJECTS)
 
 fclean: clean
