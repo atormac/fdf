@@ -14,6 +14,7 @@
 # define FDF_H
 
 #include "../libft/libft.h"
+#include "../MLX42/include/MLX42/MLX42.h"
 
 void	matrix_free(int	**p, size_t y);
 int		**matrix_alloc(size_t x, size_t y);

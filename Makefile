@@ -12,25 +12,30 @@
 
 NAME = fdf
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
+LDFLAGS = -ldl -lglfw -pthread -lm
+LIBDIR = ./libft
+MLXDIR = ./MLX42
+LIBS = ./libft/libft.a ./MLX42/build/libmlx42.a
 SOURCE_DIR = source
 SOURCES = main.c matrix.c
 OBJECTS = $(addprefix $(SOURCE_DIR)/,$(SOURCES:.c=.o))
-LIBDIR = ./libft
 
 target debug: CFLAGS += -g -fsanitize=address
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
+	$(MAKE) -C $(MLXDIR)
 	$(MAKE) -C $(LIBDIR)
-	$(CC) -o $@ $(CFLAGS) $^ ./libft/libft.a
+	$(CC) -o $@ $(CFLAGS) $^ $(LIBS) $(LDFLAGS)
 
 $(SOURCE_DIR)/%.o: %.c
-	$(CC) -I$(SOURCE_DIR) -c $(CFLAGS) $< -o $@
+	$(CC) -I$(SOURCE_DIR) -c $(CFLAGS) $(LIBS) $< -o $@
 
 clean:
 	$(MAKE) -C $(LIBDIR) $@
+	$(MAKE) -C $(MLXDIR) $@
 	rm -f $(OBJECTS)
 
 fclean: clean

@@ -49,7 +49,6 @@ int	ft_atoi(const char *str)
 {
 	long		res;
 	const char	*s;
-	long		prev;
 
 	res = 0;
 	s = str;
@@ -60,7 +59,6 @@ int	ft_atoi(const char *str)
 		s++;
 	while (*s && *s >= '0' && *s <= '9')
 	{
-		prev = res;
 		res = res * 10 + (*s - '0');
 		if (is_overflow(str, res))
 			return (overflow_ret(str));
