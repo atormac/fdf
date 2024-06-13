@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../include/fdf.h"
 
 void	matrix_free(int	**p, size_t y)
 {
@@ -30,7 +30,7 @@ int	**matrix_alloc(size_t x, size_t y)
 	int		**p;
 	size_t	i;
 
-	p = ft_calloc(1, y * sizeof(int));
+	p = ft_calloc(1, y * sizeof(int*));
 	if (!p)
 		return (NULL);
 	i = 0;
