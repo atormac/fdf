@@ -22,7 +22,7 @@ SOURCE_DIR = source
 SOURCES = main.c fdf.c matrix.c
 OBJECTS = $(addprefix $(SOURCE_DIR)/,$(SOURCES:.c=.o))
 
-target debug: CFLAGS += -g -fsanitize=address
+target debug: CFLAGS += -g
 
 all: $(NAME)
 

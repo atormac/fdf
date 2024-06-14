@@ -16,8 +16,8 @@
 #include "../libft/libft.h"
 #include "../MLX42/include/MLX42/MLX42.h"
 
-#define WIDTH 1024
-#define HEIGHT 1024
+#define WIDTH 600
+#define HEIGHT 400
 
 typedef struct	t_matrix
 {
@@ -35,6 +35,8 @@ typedef struct	t_fdf
 
 void	matrix_free(int	**p, size_t y);
 int		**matrix_alloc(size_t x, size_t y);
+int		matrix_fill(t_fdf *f, char *map);
+void	matrix_print(t_matrix *matrix);
 int		fdf_init(t_fdf *f);
 void	fdf_uninit(t_fdf *f);
 void	fdf_draw(t_fdf *f);
