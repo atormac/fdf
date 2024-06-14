@@ -49,18 +49,18 @@ void	draw_map(t_fdf *f)
 
 	y = 0;
 	matrix = f->matrix->ptr;
-	while (y < f->matrix->height * 10)
+	while (y < f->matrix->height)
 	{
 		x = 0;
-		while (x < f->matrix->width * 10)
+		while (x < f->matrix->width)
 		{
-			if (matrix[y / 10][x / 10] == 0)
-				mlx_put_pixel(f->img, y, x, 0xFFFFFF);
+			if (matrix[y][x] == 0)
+				mlx_put_pixel(f->img, x * 10, y * 10, 0xFFFFFF);
 			else
-				mlx_put_pixel(f->img, y, x, 0xff0000);
-			x += 10;
+				mlx_put_pixel(f->img, x * 10, y * 10, 0xff0000);
+			x++;
 		}
-		y += 10;
+		y++;
 	}
 }
 void	fdf_draw(t_fdf *f)
