@@ -18,6 +18,7 @@
 
 #define WIDTH 600
 #define HEIGHT 400
+#define ZOOM 20
 
 typedef struct	t_matrix
 {
@@ -33,6 +34,7 @@ typedef struct	t_fdf
 	t_matrix	*matrix;
 }	t_fdf;
 
+void	draw_map(t_fdf *f);
 void	matrix_free(int	**p, size_t y);
 int		**matrix_alloc(size_t x, size_t y);
 int		matrix_fill(t_fdf *f, char *map);

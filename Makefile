@@ -19,7 +19,7 @@ MLXDIR = ./MLX42
 LIBS = ./libft/libft.a ./MLX42/build/libmlx42.a
 INCLUDE_DIR = ./include
 SOURCE_DIR = source
-SOURCES = main.c fdf.c matrix.c
+SOURCES = main.c fdf.c matrix.c draw.c
 OBJECTS = $(addprefix $(SOURCE_DIR)/,$(SOURCES:.c=.o))
 
 target debug: CFLAGS += -g
