@@ -16,9 +16,9 @@
 #include "../libft/libft.h"
 #include "../MLX42/include/MLX42/MLX42.h"
 
-#define WIDTH 600
-#define HEIGHT 400
-#define ZOOM 20
+#define WIDTH 800
+#define HEIGHT 600
+#define SCALE 25
 
 typedef struct	t_matrix
 {
