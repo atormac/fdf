@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:21:43 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/15 18:22:12 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/15 18:43:13 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	point_scale(t_fdf *f, t_point *point)
 {
 	point->x *= SCALE;
 	point->y *= SCALE;
-	point->z *= SCALE / 15;
+	point->z *= SCALE / (SCALE / 2);
 	isometric(point);
 	point->x += f->mlx->width / 3;
 	point->y += f->mlx->height / 3;
@@ -35,39 +35,40 @@ void	point_scale(t_fdf *f, t_point *point)
 
 void	draw_pixel(t_fdf *f, int x, int y, uint32_t color)
 {
-	/*uint32_t	color;
-
-	if (f->matrix->ptr[y][x] == 0)
-		color = 0xFFFFFF;
-	else
-		color = 0xff0000;
-		*/
 	mlx_put_pixel(f->img, x, y, color);
 }
 
-void	bersenhem_line(t_fdf *f, int x0, int y0, int x1, int y1, uint32_t color)
+void	plot_line(t_fdf *f, struct t_point point0, struct t_point point1, uint32_t color)
 {
-  int dx =  abs (x1 - x0), sx = x0 < x1 ? 1 : -1;
-  int dy = -abs (y1 - y0), sy = y0 < y1 ? 1 : -1;
-  int err = dx + dy, e2; /* error value e_xy */
+  int	dx;
+  int	dy;
+  int	sx;
+  int	sy;
+  int	err;
+  int	e2;
 
+  dx =  abs (point1.x - point0.x);
+  dy = -abs (point1.y - point0.y);
+  sx = point0.x < point1.x ? 1 : -1;
+  sy = point0.y < point1.y ? 1 : -1;
+  err = dx + dy;
   while (1)
   {
-	draw_pixel(f, x0, y0, color);
-    if (x0 == x1 && y0 == y1)
+	draw_pixel(f, point0.x, point0.y, color);
+    if (point0.x == point1.x && point0.y == point1.y)
 		break;
     e2 = 2 * err;
 	/* e_xy+e_x > 0 */
     if (e2 >= dy)
 	{ 
 		err += dy;
-		x0 += sx;
+		point0.x += sx;
 	}
 	/* e_xy+e_y < 0 */
     if (e2 <= dx) 
 	{ 
 		err += dx; 
-		y0 += sy;
+		point0.y += sy;
 	}
   }
 }
@@ -88,10 +89,10 @@ void	draw_line(t_fdf *f, int x0, int y0, int x1, int y1)
 	point_scale(f, &point0);
 	point_scale(f, &point1);
 	color = 0xfffafa;
-	if (point0.z != 0)
+	if (point0.z != 0 || point1.z != 0)
 		color = 0x43ff64d9;
 
-	bersenhem_line(f, point0.x, point0.y, point1.x, point1.y, color);
+	plot_line(f, point0, point1, color);
 }
 
 void	draw_map(t_fdf *f)
