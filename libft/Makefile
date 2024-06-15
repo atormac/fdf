@@ -6,7 +6,7 @@
 #    By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 14:16:39 by atorma            #+#    #+#              #
-#    Updated: 2024/06/15 19:09:25 by atorma           ###   ########.fr        #
+#    Updated: 2024/06/15 19:20:21 by atorma           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,9 +36,6 @@ B_OBJECTS = $(B_SOURCES:.c=.o)
 
 all: $(NAME)
 
-target debug: CFLAGS += -g -fsanitize=address
-debug: $(NAME)
-
 $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
 
@@ -61,4 +58,4 @@ fclean: clean
 re: fclean all
 
 
-.PHONY: debug all bonus clean fclean re
+.PHONY: all bonus clean fclean re
