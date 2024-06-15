@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:05:05 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/15 19:47:18 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/15 20:01:18 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,14 @@ void	matrix_fill_line(char *line, int y, t_matrix *matrix)
 {
 	int		x;
 	char	*token;
+	char	*save_ptr;
 
 	x = 0;
-	token = ft_strtok(line, " ");
+	token = ft_strtok_r(line, " ", &save_ptr);
 	while (token != NULL)
 	{
 		matrix->ptr[y][x] = ft_atoi(token);
-		token = ft_strtok(NULL, " ");
+		token = ft_strtok_r(NULL, " ", &save_ptr);
 		x++;
 	}
 }
@@ -73,11 +74,11 @@ int		matrix_fill(t_fdf *f, char *map)
 
 	y = 0;
 	save_ptr = NULL;
-	line = strtok_r(map, "\n", &save_ptr);
+	line = ft_strtok_r(map, "\n", &save_ptr);
 	while (line != NULL)
 	{
 		matrix_fill_line(line, y, f->matrix);
-		line = strtok_r(NULL, "\n", &save_ptr);
+		line = ft_strtok_r(NULL, "\n", &save_ptr);
 		y++;
 	}
 	return (1);

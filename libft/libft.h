@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:37:08 by atorma            #+#    #+#             */
-/*   Updated: 2024/05/22 18:24:02 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/15 19:59:27 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct t_write_state
 char	*read_file(int fd, int buf_size, int *out_size);
 char	*ft_strpbrk(char *s1, const char *s2);
 char	*ft_strtok(char *s, const char *delim);
+char	*ft_strtok_r(char *s, const char *delim, char **saveptr);
 char	*ft_strtok_strict(char *s, const char *delim);
 void	ft_write(struct t_write_state *ws, char *buf, size_t buf_size);
 void	print_char(struct t_write_state *ws, int c);

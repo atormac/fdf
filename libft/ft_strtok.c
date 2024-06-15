@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:05:43 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/10 15:09:34 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/15 19:59:02 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,31 @@ char	*ft_strtok(char *s, const char *delim)
 	{
 		*s = '\0';
 		olds = s + 1;
+	}
+	return (token);
+}
+
+char	*ft_strtok_r(char *s, const char *delim, char **saveptr)
+{
+	char			*token;
+
+	if (s == NULL)
+		s = *saveptr;
+	while (*s == *delim)
+		s++;
+	if (*s == '\0')
+	{
+		*saveptr = s;
+		return (NULL);
+	}
+	token = s;
+	s = ft_strpbrk(token, delim);
+	if (s == NULL)
+		*saveptr = ft_strchr(token, '\0');
+	else
+	{
+		*s = '\0';
+		*saveptr = s + 1;
 	}
 	return (token);
 }
