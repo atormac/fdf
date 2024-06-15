@@ -2,17 +2,30 @@
 #include <math.h>
 #include <stdio.h>
 
-int	coord(t_fdf *f, int x)
+void  isometric(int *x, int *y, int z)
+{
+	 int tmp;
+
+	 tmp = *x;
+	 *x = (tmp - *y) * cos(0.523599);
+	 *y = (tmp + *y) * sin(0.523599) - z;
+}
+
+int	coord(t_fdf *f, int x, int y, int z)
 {
 	x *= SCALE;
+	y *= SCALE;
+	isometric(&x, &y, z);
 	x -= (f->matrix->width / 2) * SCALE;
 	x += f->mlx->width / 2;
 	return (x);
 }
 
-int	coord_y(t_fdf *f, int y)
+int	coord_y(t_fdf *f, int y, int x, int z)
 {
 	y *= SCALE;
+	x *= SCALE;
+	isometric(&x, &y, z);
 	y -= (f->matrix->height / 2) * SCALE;
 	y += f->mlx->height / 2;
 	return (y);
@@ -57,14 +70,6 @@ void	bersenhem_line(t_fdf *f, int x0, int y0, int x1, int y1)
   }
 }
 
-void  isometric(int *x, int *y, int z)
-{
-	 int tmp;
-
-	 tmp = *x;
-	 *x = (tmp - *y) * cos(0.523599);
-	 *y = (tmp + *y) * sin(0.523599) - z;
-}
 
 void	draw_line(t_fdf *f, int x0, int y0, int x1, int y1)
 {
@@ -73,17 +78,16 @@ void	draw_line(t_fdf *f, int x0, int y0, int x1, int y1)
 	int	xe;
 	int	ye;
 	int	z;
+	int	z1;
 
-	z = f->matrix->ptr[y0][y0];
+	z = f->matrix->ptr[y0][x0];
+	z1 = f->matrix->ptr[y1][x1];
 	printf("z: %d\n", z);
-	//isometric(&x0, &y0, z); 
-	//sometric(&x1, &y1, z);
-	x = coord(f, x0);
-	y = coord_y(f, y0);
-	xe = coord(f, x1);
-	ye = coord_y(f, y1);
-	printf("point from: %d, %d\n", x, y);
-	printf("point to: %d, %d\n", xe, ye);
+
+	x = coord(f, x0, y0, z);
+	y = coord_y(f, y0, x0, z);
+	xe = coord(f, x1, y1, z1);
+	ye = coord_y(f, y1, x1, z1);
 	bersenhem_line(f, x, y, xe, ye);
 }
 
@@ -93,13 +97,15 @@ void	draw_map(t_fdf *f)
 	int	y;
 
 	y = 0;
-	while (y < f->matrix->height - 1)
+	while (y < f->matrix->height)
 	{
 		x = 0;
-		while (x < f->matrix->width - 1)
+		while (x < f->matrix->width)
 		{
-			draw_line(f, x, y, x + 1, y);
-			draw_line(f, x, y, x, y + 1);
+			if (x != f->matrix->width - 1)
+				draw_line(f, x, y, x + 1, y);
+			if (y != f->matrix->height - 1)
+				draw_line(f, x, y, x, y + 1);
 			x++;
 		}
 		y++;

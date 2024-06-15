@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:19:37 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/11 21:26:56 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/15 16:23:53 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,16 @@
 #include "../libft/libft.h"
 #include "../MLX42/include/MLX42/MLX42.h"
 
-#define WIDTH 800
-#define HEIGHT 600
-#define SCALE 25
+#define WIDTH 1200
+#define HEIGHT 1000
+#define SCALE 30
+
+typedef struct	t_point
+{
+	int	x;
+	int	y;
+	int z;
+}	t_point;
 
 typedef struct	t_matrix
 {
