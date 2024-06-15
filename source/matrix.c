@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:05:05 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/11 21:27:47 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/15 19:13:02 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	matrix_free(int	**p, size_t y)
 	while (i < y)
 	{
 		free(p[i]);
-		i--;
+		i++;
 	}
 	free(p);
 }

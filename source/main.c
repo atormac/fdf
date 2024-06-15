@@ -90,5 +90,6 @@ int main(int argc, char **argv)
 	//mlx_put_pixel(img, 0, 0, 0xFF0000FF);
 
 	fdf_uninit(&f);
+	matrix_free(matrix.ptr, matrix.height);
 	return (0);
 }

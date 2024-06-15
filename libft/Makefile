@@ -6,13 +6,12 @@
 #    By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 14:16:39 by atorma            #+#    #+#              #
-#    Updated: 2024/06/10 21:19:51 by atorma           ###   ########.fr        #
+#    Updated: 2024/06/15 19:09:25 by atorma           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = cc
-CFLAGS := -Wall -Wextra -Werror
 SOURCES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		  ft_toupper.c ft_tolower.c \
 		  ft_strlen.c ft_strchr.c ft_strrchr.c \
@@ -35,9 +34,10 @@ B_SOURCES = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 OBJECTS = $(SOURCES:.c=.o)
 B_OBJECTS = $(B_SOURCES:.c=.o)
 
-target debug: CFLAGS += -g -fsanitize=address
 all: $(NAME)
 
+target debug: CFLAGS += -g -fsanitize=address
+debug: $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
@@ -60,6 +60,5 @@ fclean: clean
 
 re: fclean all
 
-debug: re
 
 .PHONY: debug all bonus clean fclean re
