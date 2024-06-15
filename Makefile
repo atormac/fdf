@@ -16,13 +16,13 @@ CFLAGS := -Wall -Wextra -Werror
 LDFLAGS = -ldl -lglfw -pthread -lm
 LIBDIR = ./libft
 MLXDIR = ./MLX42
-LIBS = ./libft/libft.a ./MLX42/build/libmlx42.a
+LIBS = $(LIBDIR)/libft.a $(MLXDIR)/build/libmlx42.a
 INCLUDE_DIR = ./include
 SOURCE_DIR = source
 SOURCES = main.c fdf.c matrix.c map.c draw.c
 OBJECTS = $(addprefix $(SOURCE_DIR)/,$(SOURCES:.c=.o))
 
-target debug: CFLAGS += -g -fsanitize=address -static-libasan
+target debug: CFLAGS += -fsanitize=address -static-libasan -g
 target debug: CDEBUG = -DDEBUG=1
 
 all: $(NAME)
