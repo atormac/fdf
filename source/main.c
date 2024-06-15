@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/15 20:50:01 by atorma            #+#    #+#             */
+/*   Updated: 2024/06/15 22:15:00 by atorma           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fdf.h"
 
 #include <stdlib.h>
@@ -21,13 +33,11 @@ int main(int argc, char **argv)
 		ft_putstr_fd("Failed to read map!\n", STDERR_FILENO);
 		return (0);
 	}
-	if (!fdf_init(&f))
+	if (fdf_init(&f))
 	{
-		ft_putstr_fd((char *)mlx_strerror(mlx_errno), STDERR_FILENO);
-		return (0);
+		fdf_draw(&f);
+		fdf_uninit(&f);
 	}
-	fdf_draw(&f);
-	fdf_uninit(&f);
 	matrix_free(matrix.ptr, matrix.height);
 	return (0);
 }

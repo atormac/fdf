@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:21:43 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/15 18:43:13 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/15 21:54:55 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	point_scale(t_fdf *f, t_point *point)
 
 void	draw_pixel(t_fdf *f, int x, int y, uint32_t color)
 {
-	mlx_put_pixel(f->img, x, y, color);
+	if (x >= 0 && y >= 0 && x < WIDTH && y < HEIGHT)
+		mlx_put_pixel(f->img, x, y, color);
 }
 
 void	plot_line(t_fdf *f, struct t_point point0, struct t_point point1, uint32_t color)

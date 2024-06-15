@@ -21,7 +21,7 @@ int	fdf_init(t_fdf *f)
 	f->img = mlx_new_image(f->mlx, f->mlx->width, f->mlx->height);
 	if (!f->img)
 		return (0);
-	ft_memset(f->img->pixels, 1, f->img->width * f->img->height * sizeof(int));
+	ft_memset(f->img->pixels, 0, f->img->width * f->img->height * sizeof(int));
 	if (mlx_image_to_window(f->mlx, f->img, 0, 0) < 0)
 		return (0);
 	return (1);
