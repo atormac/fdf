@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:05:05 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/15 19:13:02 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/15 19:47:18 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	**matrix_alloc(size_t x, size_t y)
 		p[i] = ft_calloc(1, x * sizeof(int));
 		if (!p[i])
 		{
-			i--;
 			matrix_free(p, i);
 			return (NULL);
 		}

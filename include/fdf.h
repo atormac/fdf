@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:19:37 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/15 16:23:53 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/15 19:47:57 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	matrix_free(int	**p, size_t y);
 int		**matrix_alloc(size_t x, size_t y);
 int		matrix_fill(t_fdf *f, char *map);
 void	matrix_print(t_matrix *matrix);
+int		map_to_matrix(char	*file, t_fdf *f);
 int		fdf_init(t_fdf *f);
 void	fdf_uninit(t_fdf *f);
 void	fdf_draw(t_fdf *f);
