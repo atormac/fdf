@@ -11,24 +11,14 @@ void  isometric(int *x, int *y, int z)
 	 *y = (tmp + *y) * sin(0.523599) - z;
 }
 
-int	coord(t_fdf *f, int x, int y, int z)
+void	point_convert(t_fdf *f, t_point *point)
 {
-	x *= SCALE;
-	y *= SCALE;
-	isometric(&x, &y, z);
-	x -= (f->matrix->width / 2) * SCALE;
-	x += f->mlx->width / 2;
-	return (x);
-}
-
-int	coord_y(t_fdf *f, int y, int x, int z)
-{
-	y *= SCALE;
-	x *= SCALE;
-	isometric(&x, &y, z);
-	y -= (f->matrix->height / 2) * SCALE;
-	y += f->mlx->height / 2;
-	return (y);
+	point->x *= SCALE;
+	point->y *= SCALE;
+	point->z *= SCALE;
+	isometric(&point->x, &point->y, point->z);
+	point->x += f->mlx->width / 3;
+	point->y += f->mlx->height / 3;
 }
 
 void	draw_pixel(t_fdf *f, int x, int y, uint32_t color)
@@ -73,22 +63,19 @@ void	bersenhem_line(t_fdf *f, int x0, int y0, int x1, int y1)
 
 void	draw_line(t_fdf *f, int x0, int y0, int x1, int y1)
 {
-	int	x;
-	int	y;
-	int	xe;
-	int	ye;
-	int	z;
-	int	z1;
+	t_point	point0;
+	t_point	point1;
 
-	z = f->matrix->ptr[y0][x0];
-	z1 = f->matrix->ptr[y1][x1];
-	printf("z: %d\n", z);
+	point0.x = x0;
+	point0.y = y0;
+	point0.z = f->matrix->ptr[y0][x0];
+	point1.x = x1;
+	point1.y = y1;
+	point1.z = f->matrix->ptr[y1][x1];
+	point_convert(f, &point0);
+	point_convert(f, &point1);
 
-	x = coord(f, x0, y0, z);
-	y = coord_y(f, y0, x0, z);
-	xe = coord(f, x1, y1, z1);
-	ye = coord_y(f, y1, x1, z1);
-	bersenhem_line(f, x, y, xe, ye);
+	bersenhem_line(f, point0.x, point0.y, point1.x, point1.y);
 }
 
 void	draw_map(t_fdf *f)
