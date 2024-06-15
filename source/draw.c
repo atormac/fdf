@@ -15,7 +15,7 @@ void	point_convert(t_fdf *f, t_point *point)
 {
 	point->x *= SCALE;
 	point->y *= SCALE;
-	point->z *= SCALE;
+	point->z *= SCALE / 8;
 	isometric(&point->x, &point->y, point->z);
 	point->x += f->mlx->width / 3;
 	point->y += f->mlx->height / 3;
