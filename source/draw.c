@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:21:43 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/15 21:54:55 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/15 23:00:35 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	point_scale(t_fdf *f, t_point *point)
 {
 	point->x *= SCALE;
 	point->y *= SCALE;
-	point->z *= SCALE / (SCALE / 2);
+	point->z *= SCALE;
 	isometric(point);
 	point->x += f->mlx->width / 3;
 	point->y += f->mlx->height / 3;
