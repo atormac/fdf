@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+	/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
@@ -31,6 +31,12 @@ void	point_scale(t_fdf *f, t_point *point)
 	isometric(point);
 	point->x += f->mlx->width / 2;
 	point->y += f->mlx->height / 2;
+	point->x -= (f->matrix->width / 2) * f->scale / 2; 
+	point->y -= (f->matrix->height / 2) * f->scale / 2; 
+	/*
+	point->x -= (f->matrix->width / 2) * f->scale;
+	point->y -= (f->matrix->height / 2) * f->scale;
+	*/
 }
 
 void	draw_pixel(t_fdf *f, int x, int y, uint32_t color)

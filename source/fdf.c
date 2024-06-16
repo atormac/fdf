@@ -13,20 +13,22 @@ static void	keyhook(mlx_key_data_t keydata, void *param)
 	}
 }
 
-int	min(int x, int y)
+static int	is_in_bounds(t_matrix *matrix, int scale)
 {
-	if (y < x)
-		return y;
-	return x;
+	if (scale * matrix->width > WIDTH / 2)
+		return (0);
+	if (scale * matrix->height > HEIGHT / 2)
+		return (0);
+	if (scale * matrix->z_max >= HEIGHT / 2)
+		return (0);
+	return (1);
 }
-
 static void	set_scale(t_fdf *f)
 {
-	f->scale = min(WIDTH / f->matrix->width, HEIGHT / f->matrix->height);
-	if (f->scale < 4)
-		f->scale = 2;
-	else
-		f->scale /= 2;
+	f->scale = 2;
+	while (is_in_bounds(f->matrix, f->scale + 1))
+		f->scale++;
+	printf("f->scale: %d\n", f->scale);
 }
 
 int	fdf_init(t_fdf *f)

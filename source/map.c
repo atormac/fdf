@@ -20,11 +20,11 @@ static int	map_width(char	*str)
 	int		count;
 
 	end = ft_strchr(str, '\n');
-	if (!end)
-		return (0);
-	str[end - str] = '\0';
+	if (end)
+		str[end - str] = '\0';
 	count = ft_count_words(str, ' ');
-	str[end - str] = '\n';
+	if (end)
+		str[end - str] = '\n';
 	return (count);
 }
 

@@ -18,7 +18,7 @@
 
 #define WIDTH 1200
 #define HEIGHT 1000
-#define SCALE 30
+#define SCALE 10
 
 typedef struct	t_point
 {
@@ -32,6 +32,7 @@ typedef struct	t_matrix
 	int **ptr;
 	int	width;
 	int	height;
+	int	z_max;
 }	t_matrix;
 
 typedef struct	t_fdf

@@ -55,12 +55,18 @@ void	matrix_fill_line(char *line, int y, t_matrix *matrix)
 	int		x;
 	char	*token;
 	char	*save_ptr;
+	int		absolute;
 
 	x = 0;
 	token = ft_strtok_r(line, " ", &save_ptr);
 	while (token != NULL)
 	{
 		matrix->ptr[y][x] = ft_atoi(token);
+		absolute = abs(matrix->ptr[y][x]);
+		if (y == 0 && x == 0)
+			matrix->z_max = absolute;
+		else if (absolute > matrix->z_max)
+			matrix->z_max = absolute;
 		token = ft_strtok_r(NULL, " ", &save_ptr);
 		x++;
 	}
@@ -101,5 +107,4 @@ void	matrix_print(t_matrix *matrix)
 		printf("\n");
 		i++;
 	}
-
 }
