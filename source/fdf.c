@@ -13,8 +13,25 @@ static void	keyhook(mlx_key_data_t keydata, void *param)
 	}
 }
 
+int	min(int x, int y)
+{
+	if (y < x)
+		return y;
+	return x;
+}
+
+static void	set_scale(t_fdf *f)
+{
+	f->scale = min(WIDTH / f->matrix->width, HEIGHT / f->matrix->height);
+	if (f->scale < 4)
+		f->scale = 2;
+	else
+		f->scale /= 2;
+}
+
 int	fdf_init(t_fdf *f)
 {
+	set_scale(f);
 	f->mlx = mlx_init(WIDTH, HEIGHT, "FdF", false);
 	if (!f->mlx)
 		return (0);

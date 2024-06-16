@@ -25,12 +25,12 @@ void  isometric(t_point *point)
 
 void	point_scale(t_fdf *f, t_point *point)
 {
-	point->x *= SCALE;
-	point->y *= SCALE;
-	point->z *= SCALE;
+	point->x *= f->scale;
+	point->y *= f->scale;
+	point->z *= f->scale;
 	isometric(point);
-	point->x += f->mlx->width / 3;
-	point->y += f->mlx->height / 3;
+	point->x += f->mlx->width / 2;
+	point->y += f->mlx->height / 2;
 }
 
 void	draw_pixel(t_fdf *f, int x, int y, uint32_t color)

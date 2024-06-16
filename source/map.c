@@ -14,49 +14,37 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-static int	map_line_count(char	*str)
+static int	map_width(char	*str)
 {
-	int	count;
+	char	*end;
+	int		count;
 
-	count = 0;
-	while (*str)
-	{
-		if (*str == '\n')
-			count++;
-		str++;
-	}
+	end = ft_strchr(str, '\n');
+	if (!end)
+		return (0);
+	str[end - str] = '\0';
+	count = ft_count_words(str, ' ');
+	str[end - str] = '\n';
 	return (count);
 }
 
-static int	map_line_len(char	*str)
-{
-	int	count;
-
-	count = 1;
-	while (*str && *str != '\n')
-	{
-		if (*str == ' ')
-		{
-			while (*str == ' ')
-				str++;
-			count++;
-		}
-		str++;
-	}
-	return (count);
-}
-
-static void	matrix_init(t_fdf *f, char *map)
+static int matrix_init(t_fdf *f, char *map)
 {
 	int	width;
 	int	height;
 
-	height = map_line_count(map);
-	width = map_line_len(map);
+	height = ft_count_words(map, '\n');
+	width = map_width(map);
+	if (height <= 0 || width <= 0)
+		return (0);
 	printf("height: %d, width: %d\n", height, width);
+	printf("map:\n%s\n", map);
 	f->matrix->height = height;
 	f->matrix->width = width;
 	f->matrix->ptr = matrix_alloc(width, height);
+	if (!f->matrix->ptr)
+		return (0);
+	return (1);
 }
 
 int	map_to_matrix(char	*file, t_fdf *f)
@@ -72,9 +60,7 @@ int	map_to_matrix(char	*file, t_fdf *f)
 	close(fd);
 	if (!file_data)
 		return (0);
-	printf("map:\n%s\n", file_data);
-	matrix_init(f, file_data);
-	if (!f->matrix->ptr)
+	if (!matrix_init(f, file_data))
 	{
 		free(file_data);
 		return (0);

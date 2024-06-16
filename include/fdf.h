@@ -39,6 +39,7 @@ typedef struct	t_fdf
 	mlx_t		*mlx;
 	mlx_image_t *img;
 	t_matrix	*matrix;
+	int			scale;
 }	t_fdf;
 
 void	draw_map(t_fdf *f);
