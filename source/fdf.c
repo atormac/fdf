@@ -19,10 +19,11 @@ static int	is_in_bounds(t_matrix *matrix, int scale)
 		return (0);
 	if (scale * matrix->height > HEIGHT / 2)
 		return (0);
-	if (scale * matrix->z_max >= HEIGHT / 2)
+	if (scale * matrix->z_max > HEIGHT / 2)
 		return (0);
 	return (1);
 }
+
 static void	set_scale(t_fdf *f)
 {
 	f->scale = 2;
