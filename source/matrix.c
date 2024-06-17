@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:05:05 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/15 20:01:18 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/17 15:51:09 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,21 @@ int	**matrix_alloc(size_t x, size_t y)
 	return (p);
 }
 
-void	matrix_fill_line(char *line, int y, t_matrix *matrix)
+void	matrix_fill_color(char *token, t_matrix *colors, int y, int x)
+{
+	char		*str;
+	uint32_t	color;
+
+	str = ft_strchr(token, ',');
+	if (!str)
+		return ;
+	str++;
+	color = strtol(str, NULL, 16);
+	colors->ptr[y][x] = color;
+	printf("color_hex: %lu\n", (unsigned long)colors->ptr[y][x]);	
+}
+
+void	matrix_fill_line(char *line, int y, t_matrix *matrix, t_matrix *colors)
 {
 	int		x;
 	char	*token;
@@ -62,6 +76,7 @@ void	matrix_fill_line(char *line, int y, t_matrix *matrix)
 	while (token != NULL)
 	{
 		matrix->ptr[y][x] = ft_atoi(token);
+		matrix_fill_color(token, colors, y, x);
 		absolute = abs(matrix->ptr[y][x]);
 		if (y == 0 && x == 0)
 			matrix->z_max = absolute;
@@ -83,7 +98,7 @@ int		matrix_fill(t_fdf *f, char *map)
 	line = ft_strtok_r(map, "\n", &save_ptr);
 	while (line != NULL)
 	{
-		matrix_fill_line(line, y, f->matrix);
+		matrix_fill_line(line, y, f->matrix, f->colors);
 		line = ft_strtok_r(NULL, "\n", &save_ptr);
 		y++;
 	}

@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:12:05 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/17 14:19:00 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/17 14:39:30 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@ static void	keyhook(mlx_key_data_t key, void *param)
 	}
 	if ((key.action == MLX_PRESS) || (key.action == MLX_REPEAT))
 	{
-		if (key.key == MLX_KEY_H)
+		if (key.key == MLX_KEY_H && f->scale < 200)
 		{
 			f->scale += 2;
 			draw_map(f);	
 		}
-		else if (key.key == MLX_KEY_J)
+		else if (key.key == MLX_KEY_J && f->scale > 2)
 		{
-			if (f->scale <= 2)
-				return ;
 			f->scale -= 2;
 			draw_map(f);	
 		}

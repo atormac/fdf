@@ -6,22 +6,20 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 20:50:01 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/15 22:15:00 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/17 15:26:19 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-
 int main(int argc, char **argv)
 {
 	t_fdf		f;
 	t_matrix	matrix;
+	t_matrix	colors;
 
 	f.matrix = &matrix;
+	f.colors = &colors;
 	if (argc != 2)
 	{
 		ft_putstr_fd("Usage: ./fdf <map_file>\n", STDERR_FILENO);

@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 19:45:22 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/15 19:52:41 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/17 15:26:55 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static int matrix_init(t_fdf *f, char *map)
 	f->matrix->height = height;
 	f->matrix->width = width;
 	f->matrix->ptr = matrix_alloc(width, height);
+	f->colors->ptr = matrix_alloc(width, height);
 	if (!f->matrix->ptr)
 		return (0);
 	return (1);

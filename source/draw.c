@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:21:43 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/17 14:10:42 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/17 16:32:01 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	plot_line(t_fdf *f, struct t_point point0, struct t_point point1, uint32_t 
   }
 }
 
-
 void	draw_line(t_fdf *f, int x0, int y0, int x1, int y1)
 {
 	uint32_t		color;
@@ -89,10 +88,16 @@ void	draw_line(t_fdf *f, int x0, int y0, int x1, int y1)
 	point1.z = f->matrix->ptr[y1][x1];
 	point_scale(f, &point0);
 	point_scale(f, &point1);
-	color = 0xfffafa;
+	color = 0xffffffff;
 	if (point0.z != 0 || point1.z != 0)
-		color = 0x43ff64d9;
-
+	{
+		uint32_t tmp  = (uint32_t)f->colors->ptr[y1][x1];
+		float a = (tmp >> 24) & 0xFF;
+		float r = (tmp >> 16) & 0xFF;
+		float g = (tmp >> 8) & 0xFF;
+		float b = 0xFF;
+		color = (int)a + (int)r + (int)g + (int)b;
+	}
 	plot_line(f, point0, point1, color);
 }
 

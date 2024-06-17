@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:19:37 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/15 19:47:57 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/17 15:25:31 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct	t_fdf
 	mlx_t		*mlx;
 	mlx_image_t *img;
 	t_matrix	*matrix;
+	t_matrix	*colors;
 	int			scale;
 }	t_fdf;
 
