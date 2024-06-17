@@ -6,7 +6,7 @@
 #    By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/11 21:03:29 by atorma            #+#    #+#              #
-#    Updated: 2024/06/15 20:11:07 by atorma           ###   ########.fr        #
+#    Updated: 2024/06/17 19:06:05 by atorma           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ MLXDIR = ./MLX42
 LIBS = $(LIBDIR)/libft.a $(MLXDIR)/build/libmlx42.a
 INCLUDE_DIR = ./include
 SOURCE_DIR = source
-SOURCES = main.c fdf.c matrix.c map.c draw.c
+SOURCES = main.c fdf.c matrix.c map.c draw.c color.c
 OBJECTS = $(addprefix $(SOURCE_DIR)/,$(SOURCES:.c=.o))
 
 target debug: CFLAGS += -fsanitize=address -static-libasan -g

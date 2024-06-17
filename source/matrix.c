@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:05:05 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/17 15:51:09 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/17 16:45:19 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	matrix_fill_color(char *token, t_matrix *colors, int y, int x)
 	if (!str)
 		return ;
 	str++;
-	color = strtol(str, NULL, 16);
+	color = strtoul(str, NULL, 16);
 	colors->ptr[y][x] = color;
 	printf("color_hex: %lu\n", (unsigned long)colors->ptr[y][x]);	
 }

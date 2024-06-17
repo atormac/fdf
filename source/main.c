@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 20:50:01 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/17 15:26:19 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/17 19:53:04 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int main(int argc, char **argv)
 		fdf_uninit(&f);
 	}
 	matrix_free(matrix.ptr, matrix.height);
+	matrix_free(colors.ptr, matrix.height);
 	return (0);
 }

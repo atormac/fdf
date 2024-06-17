@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:21:43 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/17 16:32:01 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/17 20:09:27 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,14 @@ void	draw_line(t_fdf *f, int x0, int y0, int x1, int y1)
 	if (point0.z != 0 || point1.z != 0)
 	{
 		uint32_t tmp  = (uint32_t)f->colors->ptr[y1][x1];
-		float a = (tmp >> 24) & 0xFF;
-		float r = (tmp >> 16) & 0xFF;
-		float g = (tmp >> 8) & 0xFF;
-		float b = 0xFF;
-		color = (int)a + (int)r + (int)g + (int)b;
+		if (tmp != 0)
+		{
+			color = color_extract(tmp);
+		}
+		else
+		{
+			color = 0xff00ffff;
+		}
 	}
 	plot_line(f, point0, point1, color);
 }

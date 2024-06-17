@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:19:37 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/17 15:25:31 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/17 19:28:22 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 
 typedef struct	t_point
 {
-	int	x;
-	int	y;
-	int z;
+	int			x;
+	int			y;
+	int			z;
+	uint32_t	color;
 }	t_point;
 
 typedef struct	t_matrix
@@ -53,4 +54,5 @@ int		map_to_matrix(char	*file, t_fdf *f);
 int		fdf_init(t_fdf *f);
 void	fdf_uninit(t_fdf *f);
 void	fdf_draw(t_fdf *f);
+uint32_t	color_extract(uint32_t color);
 #endif
