@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:21:43 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/15 23:00:35 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/17 14:10:42 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	draw_map(t_fdf *f)
 	int	y;
 
 	y = 0;
+	ft_memset(f->img->pixels, 0, f->img->width * f->img->height * sizeof(int));
 	while (y < f->matrix->height)
 	{
 		x = 0;

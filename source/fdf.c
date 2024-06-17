@@ -1,15 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/17 14:12:05 by atorma            #+#    #+#             */
+/*   Updated: 2024/06/17 14:19:00 by atorma           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fdf.h"
 #include <stdio.h>
 
-static void	keyhook(mlx_key_data_t keydata, void *param)
+static void	keyhook(mlx_key_data_t key, void *param)
 {
 	t_fdf	*f;
 
 	f = param;
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	if (key.key == MLX_KEY_ESCAPE && key.action == MLX_PRESS)
 	{
 		mlx_close_window(f->mlx);
 		return ;
+	}
+	if ((key.action == MLX_PRESS) || (key.action == MLX_REPEAT))
+	{
+		if (key.key == MLX_KEY_H)
+		{
+			f->scale += 2;
+			draw_map(f);	
+		}
+		else if (key.key == MLX_KEY_J)
+		{
+			if (f->scale <= 2)
+				return ;
+			f->scale -= 2;
+			draw_map(f);	
+		}
 	}
 }
 
