@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-#include <stdio.h>
 
 static void	keyhook(mlx_key_data_t key, void *param)
 {
@@ -54,7 +53,6 @@ static void	set_scale(t_fdf *f)
 	f->scale = 2;
 	while (is_in_bounds(f->matrix, f->scale + 1))
 		f->scale++;
-	printf("f->scale: %d\n", f->scale);
 }
 
 int	fdf_init(t_fdf *f)
@@ -70,11 +68,6 @@ int	fdf_init(t_fdf *f)
 	if (mlx_image_to_window(f->mlx, f->img, 0, 0) < 0)
 		return (0);
 	return (1);
-}
-
-void	fdf_uninit(t_fdf *f)
-{
-	mlx_terminate(f->mlx);
 }
 
 void	fdf_draw(t_fdf *f)

@@ -13,7 +13,6 @@
 #include "../include/fdf.h"
 #include "../include/color.h"
 #include "../include/bresenham.h"
-#include <stdio.h>
 
 void	draw_pixel(t_fdf *f, int x, int y, uint32_t color)
 {

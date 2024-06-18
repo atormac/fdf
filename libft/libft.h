@@ -32,6 +32,7 @@ typedef struct t_write_state
 	ssize_t	ret_val;
 }	t_write_state;
 
+int		ft_atoi_base(char *str, char *base);
 char	*read_file(int fd, int buf_size, int *out_size);
 char	*ft_strpbrk(char *s1, const char *s2);
 char	*ft_strtok(char *s, const char *delim);

@@ -12,7 +12,6 @@
 
 #include "../include/color.h"
 #include <math.h>
-#include <stdio.h>
 
 uint32_t	color_extract(uint32_t color)
 {

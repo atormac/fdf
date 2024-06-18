@@ -12,7 +12,6 @@
 
 #include "../include/fdf.h"
 #include <fcntl.h>
-#include <stdio.h>
 
 static int	map_width(char	*str)
 {
@@ -37,14 +36,16 @@ static int	matrix_init(t_fdf *f, char *map)
 	width = map_width(map);
 	if (height <= 0 || width <= 0)
 		return (0);
-	printf("height: %d, width: %d\n", height, width);
-	printf("map:\n%s\n", map);
 	f->matrix->height = height;
 	f->matrix->width = width;
 	f->matrix->ptr = matrix_alloc(width, height);
 	f->colors->ptr = matrix_alloc(width, height);
-	if (!f->matrix->ptr)
+	if (!f->matrix->ptr || !f->colors->ptr)
+	{
+		matrix_free(f->matrix->ptr, f->matrix->height);
+		matrix_free(f->colors->ptr, f->matrix->height);
 		return (0);
+	}
 	return (1);
 }
 

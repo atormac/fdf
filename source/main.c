@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 	if (fdf_init(&f))
 	{
 		fdf_draw(&f);
-		fdf_uninit(&f);
+		mlx_terminate(f.mlx);
 	}
 	matrix_free(matrix.ptr, matrix.height);
 	matrix_free(colors.ptr, matrix.height);

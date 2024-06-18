@@ -51,7 +51,6 @@ int		**matrix_alloc(size_t x, size_t y);
 int		matrix_fill(t_fdf *f, char *map);
 int		map_to_matrix(char	*file, t_fdf *f);
 int		fdf_init(t_fdf *f);
-void	fdf_uninit(t_fdf *f);
 void	fdf_draw(t_fdf *f);
 void	point_init(t_fdf *f, t_point *point, int x, int y);
 void	point_scale(t_fdf *f, t_point *point);

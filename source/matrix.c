@@ -20,6 +20,8 @@ void	matrix_free(int	**p, size_t y)
 	size_t	i;
 
 	i = 0;
+	if (!p)
+		return ;
 	while (i < y)
 	{
 		free(p[i]);
@@ -58,8 +60,10 @@ void	matrix_fill_color(char *token, t_matrix *colors, int y, int x)
 	str = ft_strchr(token, ',');
 	if (!str)
 		return ;
-	str++;
-	color = strtoul(str, NULL, 16);
+	if (ft_strlen(str) < 2)
+		return ;
+	str += 3;
+	color = ft_atoi_base(str, "0123456789ABCDEF");
 	colors->ptr[y][x] = color;
 }
 
