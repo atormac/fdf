@@ -13,7 +13,6 @@
 #include "../include/fdf.h"
 #include <fcntl.h>
 #include <string.h>
-#include <stdio.h>
 
 void	matrix_free(int	**p, size_t y)
 {
