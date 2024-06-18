@@ -11,6 +11,13 @@ static void	isometric(t_point *point)
 	point->y = (tmp + point->y) * sin(0.523599) - point->z;
 }
 
+void	point_init(t_fdf *f, t_point *point, int x, int y)
+{
+	point->x = x;
+	point->y = y;
+	point->z = f->matrix->ptr[y][x];
+}
+
 void	point_scale(t_fdf *f, t_point *point)
 {
 	point->x *= f->scale;
