@@ -25,15 +25,15 @@ static void	keyhook(mlx_key_data_t key, void *param)
 	}
 	if ((key.action == MLX_PRESS) || (key.action == MLX_REPEAT))
 	{
-		if (key.key == MLX_KEY_H && f->scale < 200)
+		if (key.key == MLX_KEY_K && f->scale < 200)
 		{
 			f->scale += 2;
-			draw_map(f);	
+			draw_map(f);
 		}
 		else if (key.key == MLX_KEY_J && f->scale > 2)
 		{
 			f->scale -= 2;
-			draw_map(f);	
+			draw_map(f);
 		}
 	}
 }
@@ -80,8 +80,6 @@ void	fdf_uninit(t_fdf *f)
 void	fdf_draw(t_fdf *f)
 {
 	draw_map(f);
-
 	mlx_key_hook(f->mlx, &keyhook, f);
 	mlx_loop(f->mlx);
 }
-

@@ -19,7 +19,7 @@ MLXDIR = ./MLX42
 LIBS = $(LIBDIR)/libft.a $(MLXDIR)/build/libmlx42.a
 INCLUDE_DIR = ./include
 SOURCE_DIR = source
-SOURCES = main.c fdf.c matrix.c map.c draw.c color.c
+SOURCES = main.c fdf.c matrix.c map.c draw.c bresenham.c point.c color.c
 OBJECTS = $(addprefix $(SOURCE_DIR)/,$(SOURCES:.c=.o))
 
 target debug: CFLAGS += -fsanitize=address -static-libasan -g

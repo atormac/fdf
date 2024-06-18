@@ -33,7 +33,7 @@ int	**matrix_alloc(size_t x, size_t y)
 	int		**p;
 	size_t	i;
 
-	p = ft_calloc(1, y * sizeof(int*));
+	p = ft_calloc(1, y * sizeof(int *));
 	if (!p)
 		return (NULL);
 	i = 0;
@@ -61,7 +61,6 @@ void	matrix_fill_color(char *token, t_matrix *colors, int y, int x)
 	str++;
 	color = strtoul(str, NULL, 16);
 	colors->ptr[y][x] = color;
-	printf("color_hex: %lu\n", (unsigned long)colors->ptr[y][x]);	
 }
 
 void	matrix_fill_line(char *line, int y, t_matrix *matrix, t_matrix *colors)
@@ -87,7 +86,7 @@ void	matrix_fill_line(char *line, int y, t_matrix *matrix, t_matrix *colors)
 	}
 }
 
-int		matrix_fill(t_fdf *f, char *map)
+int	matrix_fill(t_fdf *f, char *map)
 {
 	int		y;
 	char	*save_ptr;
@@ -103,23 +102,4 @@ int		matrix_fill(t_fdf *f, char *map)
 		y++;
 	}
 	return (1);
-}
-
-void	matrix_print(t_matrix *matrix)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < matrix->height)
-	{
-		j = 0;
-		while (j < matrix->width)
-		{
-			printf("%d ", matrix->ptr[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
 }

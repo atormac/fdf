@@ -16,9 +16,8 @@
 #include "../libft/libft.h"
 #include "../MLX42/include/MLX42/MLX42.h"
 
-#define WIDTH 1200
-#define HEIGHT 1000
-#define SCALE 10
+#define WIDTH	1200
+#define HEIGHT	1000
 
 typedef struct	t_point
 {
@@ -45,14 +44,15 @@ typedef struct	t_fdf
 	int			scale;
 }	t_fdf;
 
+void	draw_pixel(t_fdf *f, int x, int y, uint32_t color);
 void	draw_map(t_fdf *f);
 void	matrix_free(int	**p, size_t y);
 int		**matrix_alloc(size_t x, size_t y);
 int		matrix_fill(t_fdf *f, char *map);
-void	matrix_print(t_matrix *matrix);
 int		map_to_matrix(char	*file, t_fdf *f);
 int		fdf_init(t_fdf *f);
 void	fdf_uninit(t_fdf *f);
 void	fdf_draw(t_fdf *f);
-uint32_t	color_extract(uint32_t color);
+void	point_scale(t_fdf *f, t_point *point);
+void	point_set_color(t_fdf *f, t_point *point);
 #endif

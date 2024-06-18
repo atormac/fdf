@@ -28,7 +28,7 @@ static int	map_width(char	*str)
 	return (count);
 }
 
-static int matrix_init(t_fdf *f, char *map)
+static int	matrix_init(t_fdf *f, char *map)
 {
 	int	width;
 	int	height;
