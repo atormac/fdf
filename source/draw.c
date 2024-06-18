@@ -38,8 +38,22 @@ void	draw_pixel(t_fdf *f, int x, int y, uint32_t color)
 	if (x >= 0 && y >= 0 && x < WIDTH && y < HEIGHT)
 		mlx_put_pixel(f->img, x, y, color);
 }
+float	ft_percent(int start, int end, int current)
+{
+	float dist_2;
+	float distance;
 
-void	plot_line(t_fdf *f, struct t_point point0, struct t_point point1, uint32_t color)
+	dist_2 = current - start;
+	distance = end - start;
+	if (distance == 0)
+		return (1.0);
+	return (dist_2 / distance);
+}
+
+
+uint32_t	color_get(uint32_t start, uint32_t end, float percent);
+
+void	plot_line(t_fdf *f, struct t_point point0, struct t_point point1)
 {
   int	dx;
   int	dy;
@@ -53,9 +67,19 @@ void	plot_line(t_fdf *f, struct t_point point0, struct t_point point1, uint32_t 
   sx = point0.x < point1.x ? 1 : -1;
   sy = point0.y < point1.y ? 1 : -1;
   err = dx + dy;
+  int	start_x = point0.x;
+  int	start_y = point0.y;
+  float	per = 0.0;
+  /*if (point0.color != point1.color)
+  {
+	  point0.color = color_get(point0.color, point1.color, 0.423);
+  }
+  */
   while (1)
   {
-	draw_pixel(f, point0.x, point0.y, color);
+	printf("per: %f\n", per);
+	uint32_t gradient = color_get(point0.color, point1.color, per);
+	draw_pixel(f, point0.x, point0.y, gradient);
     if (point0.x == point1.x && point0.y == point1.y)
 		break;
     e2 = 2 * err;
@@ -64,19 +88,31 @@ void	plot_line(t_fdf *f, struct t_point point0, struct t_point point1, uint32_t 
 	{ 
 		err += dy;
 		point0.x += sx;
+		per = ft_percent(start_x, point1.x, point0.x);
 	}
 	/* e_xy+e_y < 0 */
     if (e2 <= dx) 
 	{ 
 		err += dx; 
 		point0.y += sy;
+		per = ft_percent(start_y, point1.y, point0.y);
 	}
   }
 }
 
+void	point_set_color(t_fdf *f, t_point *point)
+{
+	uint32_t	col_matrix;
+
+	point->color = 0xffffffff;
+	if (point->z != 0)
+		point->color = 0xff00ffff;
+	col_matrix  = (uint32_t)f->colors->ptr[point->y][point->x];
+	if (col_matrix != 0)
+		point->color = color_extract(col_matrix);
+}
 void	draw_line(t_fdf *f, int x0, int y0, int x1, int y1)
 {
-	uint32_t		color;
 	t_point	point0;
 	t_point	point1;
 
@@ -86,22 +122,11 @@ void	draw_line(t_fdf *f, int x0, int y0, int x1, int y1)
 	point1.x = x1;
 	point1.y = y1;
 	point1.z = f->matrix->ptr[y1][x1];
+	point_set_color(f, &point0);
+	point_set_color(f, &point1);
 	point_scale(f, &point0);
 	point_scale(f, &point1);
-	color = 0xffffffff;
-	if (point0.z != 0 || point1.z != 0)
-	{
-		uint32_t tmp  = (uint32_t)f->colors->ptr[y1][x1];
-		if (tmp != 0)
-		{
-			color = color_extract(tmp);
-		}
-		else
-		{
-			color = 0xff00ffff;
-		}
-	}
-	plot_line(f, point0, point1, color);
+	plot_line(f, point0, point1);
 }
 
 void	draw_map(t_fdf *f)
