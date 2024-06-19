@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 20:50:01 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/17 19:53:04 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/19 17:19:06 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	}
 	if (!map_to_matrix(argv[1], &f))
 	{
-		ft_putstr_fd("Failed to read map!\n", STDERR_FILENO);
+		ft_putstr_fd("Invalid map!\n", STDERR_FILENO);
 		return (0);
 	}
 	if (fdf_init(&f))
