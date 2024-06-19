@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:31:53 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/19 15:27:23 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/19 15:35:01 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	point_set_color(t_fdf *f, t_point *point)
 			point->color = COLOR_PURPLE;
 		if (f->color_opt == C_OPT_GREEN)
 			point->color = COLOR_GREEN;
+		if (f->color_opt == C_OPT_YELLOW)
+			point->color = COLOR_YELLOW;
 		if (f->color_opt == C_OPT_WHITE)
 			point->color = COLOR_WHITE;
 	}

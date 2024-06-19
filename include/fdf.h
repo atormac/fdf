@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:19:37 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/19 15:25:14 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/19 15:34:35 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ enum
 {
 	C_OPT_MAGENTA,
 	C_OPT_GREEN,
+	C_OPT_YELLOW,
 	C_OPT_WHITE,
 	C_OPT_END,
 };

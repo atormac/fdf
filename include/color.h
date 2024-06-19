@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:39:14 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/19 15:27:55 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/19 15:34:07 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # define COLOR_WHITE 0xffffffff
 # define COLOR_GREEN 0x00ff00ff
+# define COLOR_YELLOW 0xffff00ff
 # define COLOR_PURPLE 0xff00ffff
 
 typedef struct t_color
