@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:05:05 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/19 14:56:08 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/19 14:57:21 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ int	matrix_fill(t_fdf *f, char *map)
 
 	y = 0;
 	save_ptr = NULL;
+	if (f->matrix->height != (int)ft_count_words(map, '\n'))
+		return (0);
 	line = ft_strtok_r(map, "\n", &save_ptr);
 	while (line != NULL)
 	{
