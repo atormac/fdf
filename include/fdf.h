@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:19:37 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/19 15:34:35 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/19 15:47:44 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 
-# define WIDTH	1200
-# define HEIGHT	1000
+# define WIDTH	2500
+# define HEIGHT	2000
 
 enum
 {
