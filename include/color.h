@@ -4,8 +4,9 @@
 
 #include <stdint.h>
 
-#define COLOR_WHITE 0xffffffff;
-#define COLOR_PURPLE 0xff00ffff;
+#define COLOR_WHITE 0xffffffff
+#define COLOR_BLACK 0x000000ff
+#define COLOR_PURPLE 0xff00ffff
 
 typedef struct t_color
 {
