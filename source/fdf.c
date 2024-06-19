@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:12:05 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/19 15:28:30 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/19 16:22:58 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	keyhook(mlx_key_data_t key, void *param)
 		mlx_close_window(f->mlx);
 		return ;
 	}
-	if ((key.action == MLX_PRESS) || (key.action == MLX_REPEAT))
+	if (key.action == MLX_PRESS)
 	{
-		if (key.key == MLX_KEY_C && key.action == MLX_PRESS)
+		if (key.key == MLX_KEY_C)
 			point_rotate_color(f);
 		else if (key.key == MLX_KEY_K && f->scale < 200)
 		{
