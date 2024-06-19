@@ -6,20 +6,20 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:19:37 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/17 19:28:22 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/19 14:39:04 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-#include "../libft/libft.h"
-#include "../MLX42/include/MLX42/MLX42.h"
+# include "../libft/libft.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 
-#define WIDTH	1200
-#define HEIGHT	1000
+# define WIDTH	1200
+# define HEIGHT	1000
 
-typedef struct	t_point
+typedef struct t_point
 {
 	int			x;
 	int			y;
@@ -27,18 +27,18 @@ typedef struct	t_point
 	uint32_t	color;
 }	t_point;
 
-typedef struct	t_matrix
+typedef struct t_matrix
 {
-	int **ptr;
+	int	**ptr;
 	int	width;
 	int	height;
 	int	z_max;
 }	t_matrix;
 
-typedef struct	t_fdf
+typedef struct t_fdf
 {
 	mlx_t		*mlx;
-	mlx_image_t *img;
+	mlx_image_t	*img;
 	t_matrix	*matrix;
 	t_matrix	*colors;
 	int			scale;

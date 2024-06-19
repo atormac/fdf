@@ -1,11 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/19 14:39:14 by atorma            #+#    #+#             */
+/*   Updated: 2024/06/19 14:39:23 by atorma           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef COLOR_H
 # define COLOR_H
 
-#include <stdint.h>
+# include <stdint.h>
 
-#define COLOR_WHITE 0xffffffff
-#define COLOR_PURPLE 0xff00ffff
+# define COLOR_WHITE 0xffffffff
+# define COLOR_PURPLE 0xff00ffff
 
 typedef struct t_color
 {
