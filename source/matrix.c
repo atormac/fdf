@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:05:05 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/17 16:45:19 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/19 14:56:08 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ int	matrix_fill(t_fdf *f, char *map)
 	line = ft_strtok_r(map, "\n", &save_ptr);
 	while (line != NULL)
 	{
+		if (f->matrix->width != (int)ft_count_words(line, ' '))
+			return (0);
 		matrix_fill_line(line, y, f->matrix, f->colors);
 		line = ft_strtok_r(NULL, "\n", &save_ptr);
 		y++;

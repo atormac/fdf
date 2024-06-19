@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 19:45:22 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/17 15:26:55 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/19 14:51:49 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,13 @@ int	map_to_matrix(char	*file, t_fdf *f)
 		free(file_data);
 		return (0);
 	}
-	matrix_fill(f, file_data);
+	if (!matrix_fill(f, file_data))
+	{
+		matrix_free(f->matrix->ptr, f->matrix->height);
+		matrix_free(f->colors->ptr, f->matrix->height);
+		free(file_data);
+		return (0);
+	}
 	free(file_data);
 	return (1);
 }
