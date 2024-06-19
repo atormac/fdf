@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:12:05 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/17 14:39:30 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/19 15:28:30 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ static void	keyhook(mlx_key_data_t key, void *param)
 	}
 	if ((key.action == MLX_PRESS) || (key.action == MLX_REPEAT))
 	{
-		if (key.key == MLX_KEY_K && f->scale < 200)
+		if (key.key == MLX_KEY_C && key.action == MLX_PRESS)
+			point_rotate_color(f);
+		else if (key.key == MLX_KEY_K && f->scale < 200)
 		{
 			f->scale += 2;
 			draw_map(f);
@@ -57,6 +59,7 @@ static void	set_scale(t_fdf *f)
 
 int	fdf_init(t_fdf *f)
 {
+	f->color_opt = C_OPT_MAGENTA;
 	set_scale(f);
 	f->mlx = mlx_init(WIDTH, HEIGHT, "FdF", false);
 	if (!f->mlx)

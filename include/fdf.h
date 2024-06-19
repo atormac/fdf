@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:19:37 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/19 14:39:04 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/19 15:25:14 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
 
 # define WIDTH	1200
 # define HEIGHT	1000
+
+enum
+{
+	C_OPT_MAGENTA,
+	C_OPT_GREEN,
+	C_OPT_WHITE,
+	C_OPT_END,
+};
 
 typedef struct t_point
 {
@@ -42,6 +50,7 @@ typedef struct t_fdf
 	t_matrix	*matrix;
 	t_matrix	*colors;
 	int			scale;
+	int			color_opt;
 }	t_fdf;
 
 void	draw_pixel(t_fdf *f, int x, int y, uint32_t color);
@@ -55,4 +64,5 @@ void	fdf_draw(t_fdf *f);
 void	point_init(t_fdf *f, t_point *point, int x, int y);
 void	point_scale(t_fdf *f, t_point *point);
 void	point_set_color(t_fdf *f, t_point *point);
+void	point_rotate_color(t_fdf *f);
 #endif

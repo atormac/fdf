@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:31:53 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/19 14:31:55 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/19 15:27:23 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,23 @@ void	point_set_color(t_fdf *f, t_point *point)
 
 	point->color = COLOR_WHITE;
 	if (point->z != 0)
-		point->color = COLOR_PURPLE;
+	{
+		if (f->color_opt == C_OPT_MAGENTA)
+			point->color = COLOR_PURPLE;
+		if (f->color_opt == C_OPT_GREEN)
+			point->color = COLOR_GREEN;
+		if (f->color_opt == C_OPT_WHITE)
+			point->color = COLOR_WHITE;
+	}
 	col_matrix = (uint32_t)f->colors->ptr[point->y][point->x];
 	if (col_matrix != 0)
 		point->color = color_extract(col_matrix);
+}
+
+void	point_rotate_color(t_fdf *f)
+{
+	f->color_opt++;
+	if (f->color_opt == C_OPT_END)
+		f->color_opt = C_OPT_MAGENTA;
+	draw_map(f);
 }
