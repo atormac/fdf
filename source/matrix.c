@@ -6,7 +6,7 @@
 /*   By: atorma <atorma@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 21:05:05 by atorma            #+#    #+#             */
-/*   Updated: 2024/06/19 16:28:32 by atorma           ###   ########.fr       */
+/*   Updated: 2024/06/19 17:15:54 by atorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	matrix_fill_color(char *token, t_matrix *colors, int y, int x)
 	colors->ptr[y][x] = color;
 }
 
-void	matrix_fill_line(char *line, int y, t_matrix *matrix, t_matrix *colors)
+int	matrix_fill_line(char *line, int y, t_matrix *matrix, t_matrix *colors)
 {
 	int		x;
 	char	*token;
@@ -76,6 +76,8 @@ void	matrix_fill_line(char *line, int y, t_matrix *matrix, t_matrix *colors)
 	token = ft_strtok_r(line, " ", &save_ptr);
 	while (token != NULL)
 	{
+		if (*token != '-' && !ft_isdigit(*token))
+			return (0);
 		matrix->ptr[y][x] = ft_atoi(token);
 		matrix_fill_color(token, colors, y, x);
 		absolute = abs(matrix->ptr[y][x]);
@@ -86,6 +88,7 @@ void	matrix_fill_line(char *line, int y, t_matrix *matrix, t_matrix *colors)
 		token = ft_strtok_r(NULL, " ", &save_ptr);
 		x++;
 	}
+	return (1);
 }
 
 int	matrix_fill(t_fdf *f, char *map)
@@ -96,12 +99,11 @@ int	matrix_fill(t_fdf *f, char *map)
 
 	y = 0;
 	save_ptr = NULL;
-	if (f->matrix->height != (int)ft_count_words(map, '\n'))
-		return (0);
 	line = ft_strtok_r(map, "\n", &save_ptr);
 	while (line != NULL)
 	{
-		matrix_fill_line(line, y, f->matrix, f->colors);
+		if (!matrix_fill_line(line, y, f->matrix, f->colors))
+			return (0);
 		line = ft_strtok_r(NULL, "\n", &save_ptr);
 		y++;
 	}
